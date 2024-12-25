@@ -1,0 +1,61 @@
+﻿@model Nexin.Entity.Hizmet
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Projeler</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AltAd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AltAd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KapakResimi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KapakResimi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnaResim)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnaResim)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnaResim1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnaResim1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnaResim2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnaResim2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Video)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Video)
+        </dd>
+      
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

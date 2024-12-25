@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Nexin.Entity.AnaSayfaHakkindaResimler>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Galeri</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Ekle</a>
+</p>
+
+<style>
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 200px;
+        text-align: center;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+
+    .card-text {
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .card-actions .btn {
+        margin: 4px;
+        width: 80px;
+    }
+</style>
+
+<div class="card-container">
+    @foreach (var item in Model)
+
+    {
+        <div class="card">
+            <img src="~/img/@item.Resim" alt="Resim" class="card-img">
+            <div class="card-body">
+                <p class="card-text">@item.Resim</p>
+                <div class="card-actions">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detaylar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

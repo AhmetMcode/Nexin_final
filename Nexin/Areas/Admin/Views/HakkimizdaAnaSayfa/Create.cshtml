@@ -1,0 +1,63 @@
+﻿@model Nexin.Entity.HakkimizdaAnaSayfa
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>HakkimizdaAnaSayfa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Baslik" class="control-label"></label>
+                <input asp-for="Baslik" class="form-control" />
+                <span asp-validation-for="Baslik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Icerik" class="control-label"></label>
+                <input asp-for="Icerik" class="form-control" />
+                <span asp-validation-for="Icerik" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Yazi1" class="control-label"></label>
+                <input asp-for="Yazi1" class="form-control" />
+                <span asp-validation-for="Yazi1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Yazi2" class="control-label"></label>
+                <input asp-for="Yazi2" class="form-control" />
+                <span asp-validation-for="Yazi2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Yazi3" class="control-label"></label>
+                <input asp-for="Yazi3" class="form-control" />
+                <span asp-validation-for="Yazi3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Yazi4" class="control-label"></label>
+                <input asp-for="Yazi4" class="form-control" />
+                <span asp-validation-for="Yazi4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Yazi5" class="control-label"></label>
+                <input asp-for="Yazi5" class="form-control" />
+                <span asp-validation-for="Yazi5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

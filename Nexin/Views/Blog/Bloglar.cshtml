@@ -1,0 +1,194 @@
+﻿@using Nexin.Entity;
+@model BlogVM
+<div class="blog-details-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="blog-details-item">
+                    <div class="blog-details-name">
+                        <div class="details-user">
+                            <ul>
+                                <li>
+                                    <span>by</span>
+                                    <a href="#">Morfo Teknoloji</a>
+                                </li>
+                                <li>
+                                    <span>@Model.Blog.OlusturmaTarihi.ToString("dd.mm.yyyy")</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <h2>@Model.Blog.Baslik</h2>
+                        <p>@Html.Raw(Model.Blog.Icerik)</p>
+                        @*<div class="row align-items-center">
+                            <div class="col-sm-6 col-lg-6">
+                                <img src="~/@Model.Resim" alt="Blog Details">
+                            </div>
+                           @* <div class="col-sm-6 col-lg-6">
+                                <div class="details-item">
+                                    <ul>
+                                        <li>
+                                            <i class='bx bx-check-square'></i>
+                                            Improved  Monitoring
+                                        </li>
+                                        <li>
+                                            <i class='bx bx-check-square'></i>
+                                            Greater Efficiency
+                                        </li>
+                                        <li>
+                                            <i class='bx bx-check-square'></i>
+                                            Fast Implementation
+                                        </li>
+                                        <li>
+                                            <i class='bx bx-check-square'></i>
+                                            Better Safety
+                                        </li>
+                                        <li>
+                                            <i class='bx bx-check-square'></i>
+                                            High Revenue
+                                        </li>
+                                        <li>
+                                            <i class='bx bx-check-square'></i>
+                                            Lower Costs
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>*@
+                  
+                    </div>
+                    <div class="blog-details-quote">
+                        <ul>
+                            <li>
+                                <span>Tags:</span>
+                            </li>
+                            <li>
+                                <a href="#">Otomasyon</a>
+                            </li>
+                            <li>
+                                <a href="#">Fabrika</a>
+                            </li>
+                            <li>
+                                <a href="#">İmalat</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-area blog-area-two blog-area-three">
+                        <div class="section-title">
+                            <h2>Benzer Bloglar</h2>
+                        </div>
+                        <div class="row">
+                            @foreach (var item in Model.Bloglar.Take(2))
+                            {
+                                <div class=" col-lg-6">
+                                    <div class="blog-item">
+                                        <a asp-action="Bloglar" asp-controller="Blog" asp-route-id="@item.Url">
+                                            <img src="~/@item.Resim" alt="Blog">
+                                        </a>
+                                        <span>@item.OlusturmaTarihi.ToString("dd.mm.yyyy")</span>
+                                        <div class="blog-inner">
+                                            <h3>
+                                                <a asp-action="Bloglar" asp-controller="Blog" asp-route-id="@item.Url"> @item.Baslik </a>
+                                            </h3>
+                                            <p>@item.KisaAciklama</p>
+                                            <a class="blog-link" asp-action="Bloglar" asp-controller="Blog" asp-route-id="@item.Url">
+                                                Daha Fazla Oku
+                                                <i class='bx bx-plus'></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                                                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="blog-details-item">
+                    <div class="blog-details-search details-head">
+                        <h3>Ara</h3>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <button type="submit" class="btn blog-details-src-btn">
+                                    <i class='bx bx-search'></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="blog-details-post details-head">
+                        <h3>Popüler Postlar</h3>
+                        <ul>
+                            @foreach (var item in Model.Bloglar.OrderByDescending(x=>x.OlusturmaTarihi))
+                            {
+                                <li>
+                                    <img src="~/@item.Resim" alt="Blog Details">
+                                    <div class="post-inner">
+                                        <span>@item.OlusturmaTarihi.ToString("dd.mm.yyyy")</span>
+                                        <a href="/blog/bloglar/@item.Url">@item.Baslik</a>
+                                    </div>
+                                </li>
+
+                            }                       
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+@*        <div class="blog-details-comment pb-100">
+            <h3>Comments</h3>
+            <ul>
+                <li>
+                    <img src="assets/img/blog-details-cmnt1.png" alt="Comment">
+                    <div class="comment-inner">
+                        <h4>Jimmy Pearson</h4>
+                        <span>January 23, 2020</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                        <a href="#">Reply</a>
+                    </div>
+                </li>
+                <li>
+                    <img src="assets/img/blog-details-cmnt2.png" alt="Comment">
+                    <div class="comment-inner">
+                        <h4>John Wick</h4>
+                        <span>January 24, 2020</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                        <a href="#">Reply</a>
+                    </div>
+                </li>
+                <li>
+                    <img src="assets/img/blog-details-cmnt3.png" alt="Comment">
+                    <div class="comment-inner">
+                        <h4>Tom Henry</h4>
+                        <span>January 25, 2020</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                        <a href="#">Reply</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="blog-details-form">
+            <h3>Leave A Reply</h3>
+            <form>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <textarea id="your-comment" rows="8" class="form-control" placeholder="Comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn blog-details-form-btn">Post A Comment</button>
+            </form>
+        </div>*@
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Nexin.Entity.Iletisim>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Siteye Gelen Mesajlar</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Isim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Konu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mesaj)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Konu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mesaj)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

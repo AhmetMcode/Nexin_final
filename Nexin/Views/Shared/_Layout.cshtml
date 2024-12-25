@@ -1,0 +1,349 @@
+﻿@inject Nexin.Controllers.HomeController home
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" href="~/assets/css/meanmenu.css">
+    <!-- Boxicons CSS -->
+    <link rel="stylesheet" href="~/assets/css/boxicons.min.css">
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="~/assets/fonts/flaticon.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~assets/css/owl.theme.default.min.css">
+    <!-- Odometer CSS-->
+    <link rel="stylesheet" href="~/assets/css/odometer.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <!-- Dark CSS -->
+    <link rel="stylesheet" href="~/assets/css/dark.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+
+    <title>@home.Title()</title>
+    <link rel="icon" href="~/assets/img/favicon.png?v=2" type="image/x-icon" />
+
+    <style>
+        .mean-container .mean-bar {
+            background-color: @home.Renk();
+        }
+
+        .mobile-nav.mean-container .mean-nav ul li a.active {
+            color: @home.Renk();
+        }
+
+
+
+        .custom-button {
+            background-color: #000000; /* Gri arka plan rengi */
+            color: white; /* Beyaz yazı rengi */
+            padding: 10px 20px; /* İç boşluk */
+            text-align: center; /* Metni ortala */
+            text-decoration: none; /* Altı çizili metni kaldır */
+            display: inline-block; /* Butonu düzgün bir şekilde hizala */
+            font-size: 16px; /* Yazı boyutu */
+            border-radius: 5px; /* Kenarları yuvarlaklaştır */
+            border: none; /* Kenar çizgisini kaldır */
+            cursor: pointer; /* İmleç üzerine gelince el simgesi */
+        }
+
+            .custom-button:hover {
+                background-color: #808080; /* Hover durumunda arka plan rengini siyah yap */
+            }
+
+        /* Dropdown başlıklarını siyah yap */
+        .navbar-nav .dropdown-toggle {
+            color: black !important;
+        }
+
+            /* bx-chevron-down ikonunun rengini siyah yap */
+            .navbar-nav .dropdown-toggle i {
+                color: black !important;
+            }
+
+        /* Dropdown içindeki her bir item için */
+        .dropdown-item {
+            max-width: 250px; /* Maksimum genişlik sınırı */
+            white-space: normal; /* Metnin alt satıra geçmesine izin ver */
+            word-wrap: break-word; /* Uzun kelimeleri böler */
+            overflow: hidden; /* Taşan içeriği gizler */
+            text-overflow: ellipsis; /* Taşan kısımda '...' ekler */
+        }
+    </style>
+    <!-- Önce jQuery, sonra Popper.js, ardından Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <!-- Pre Loader -->
+    <!-- End Pre Loader -->
+    <!-- Header top -->
+    <div class="header-top-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-top-item">
+                        <div class="header-right" style="text-align: right;">
+                            <ul>
+                                <li>
+                                    <a href="@home.Linked()" target="_blank">
+                                        <i class='bx bxl-linkedin'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="logo-link" href="https://www.morfoteknoloji.com/" style="all: unset; color: inherit; text-decoration: none;">
+                                        <img src="~/assets/img/morfo250new.png" alt="Morfo Teknoloji Logo" style="height: 40px; margin-left: 10px;">
+                                    </a>
+
+                                </li>
+
+                                <li style="margin-left: 10px; margin-top: 5px; color: white; font-size: 14px;">
+                                    Nexin Robotics <br> Morfo Teknoloji markasıdır.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Header top -->
+    <!-- Start Navbar Area -->
+    <div class="navbar-area sticky-top">
+        <!-- Desktop Device -->
+        <div class="main-nav" style="background-color:@home.Renk()">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <img src="~/img/@home.Logo()" alt="Logo" class="custom-img">
+                    </a>
+                    <!-- Toggler Button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse ms-4" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            @foreach (var item in home.UstBarList().Where(x => x.Top))
+                            {
+                                <!-- Eğer Alt Menü Yoksa -->
+                                @if (!home.UstBarList().Any(x => x.Top == false && x.ustAd == item.Ad))
+                                {
+                                    <li class="nav-item">
+                                        <a href="@item.baglanacakUrl" class="nav-link active">@item.Ad</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <!-- Eğer Alt Menü Varsa -->
+                                    <li class="nav-item dropdown">
+                                        <a href="@item.baglanacakUrl"
+                                           class="nav-link dropdown-toggle"
+                                           id="navbarDropdown-@item.Ad"
+                                           role="button"
+                                           data-toggle="dropdown"
+                                           aria-haspopup="true"
+                                           aria-expanded="false"
+                                           onclick="location.href='@item.baglanacakUrl'">
+                                            @item.Ad <i class='bx bx-chevron-down'></i>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown-@item.Ad">
+                                            @foreach (var alt in home.UstBarList().Where(x => x.Top == false && x.ustAd == item.Ad))
+                                            {
+                                                <li>
+                                                    <a href="@alt.baglanacakUrl" class="dropdown-item">@alt.Ad</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        </ul>
+
+                        <!-- Buton -->
+                        <div class="nav-item contact-button">
+                            <a asp-controller="Home" asp-action="Iletisim" class="custom-button">İletişime Geçin</a>
+                        </div>
+                    </div>
+
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- End Navbar Area -->
+    <!-- Banner -->
+    
+    <!-- End Banner -->
+    <!-- About -->
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- End Blog -->
+    <!-- Footer -->
+    <footer class="pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="footer-item">
+                        <div class="footer-logo">
+                            <a class="logo-link" asp-controller="Home" asp-action="Index">
+                                <img src="~/img/@home.Logo()" alt="Logo" style="height: 60px;">
+                            </a>
+
+                            <p>
+                                2023 yılında kurulan Nexin, robotik ve otomasyon alanında faaliyet gösteren yenilikçi bir teknoloji şirketidir. Misyonumuz, "İnsani İşleri Değiştirmek Değil, Geliştirmek" ilkesi doğrultusunda, işletmelerin verimliliğini artırmak ve teknolojiyi insana hizmet eden bir araç olarak sunmaktır.
+                            </p>
+
+                            <a class="logo-link" href="https://www.morfoteknoloji.com/">
+                                <img src="~/assets/img/morfo250new.png" alt="Morfo Teknoloji Logo" style="height: 100px;">
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="@home.Linked()" target="_blank">
+                                        <i class='bx bxl-linkedin'></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="footer-item">
+                        <div class="footer-service">
+                            <h3>Hizmetler</h3>
+                            <ul>
+                                @foreach (var item in home.HizmetlerAlt())
+                                {
+                                    <li>
+                                        <a href="/Home/Hizmetler/@item.URL" target="_blank">@item.Ad</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="footer-item">
+                        <div class="footer-service">
+                            <h3>Yararlı Linkler</h3>
+                            <ul>
+                                @foreach (var item in home.YaraliLinkler())
+                                {
+                                    <li>
+                                        <a href="@item.URL" target="_blank">@item.Ad</a>
+                                    </li>
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="footer-item">
+                        <div class="footer-touch">
+                            <h3>İletişim Bilgileri</h3>
+                            <ul>
+                                <li>
+                                    <i class='bx bxs-phone-call'></i>
+                                    <h4>GSM</h4>
+                                    <a href="tel:@home.Telefon()">@home.Telefon()</a>
+                                </li>
+                                <li>
+                                    <i class='bx bx-mail-send'></i>
+                                    <h4>Email</h4>
+                                    <a href="mailto:@home.Mail()">@home.Mail()</a>
+                                </li>
+                                <li>
+                                    <i class='bx bx-location-plus'></i>
+                                    <h4>Adres</h4>
+                                    <span>@home.adres()</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <!-- Copyright -->
+    <div class="copyright-area">
+        <div class="container">
+            <div class="copyright-item">
+                <p>Copyright ©2022 Nexin. Designed By <a href="https://morfoteknoloji.com" target="_blank">Morfo Teknoloji</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- End Copyright -->
+    <!-- Essential JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script>
+        var allElements = document.querySelectorAll('*');
+        debugger;
+        // Tüm elementlerin arka plan rengini beyaza çevirin
+        for (var i = 0; i < allElements.length; i++) {
+            console.log(allElements[i].style.backgroundColor);
+            if (allElements[i].style.backgroundColor== '#fa5f0b') {
+
+            allElements[i].style.backgroundColor = '@home.Renk()';
+            }
+            if (allElements[i].style.color == '#fa5f0b') {
+
+                allElements[i].style.color = '@home.Renk()';
+}
+        }
+    </script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Form Validator JS -->
+    <script src="~/assets/js/form-validator.min.js"></script>
+    <!-- Contact JS -->
+    <script src="~/assets/js/contact-form-script.js"></script>
+    <!-- Meanmenu JS -->
+    <script src="~/assets/js/jquery.meanmenu.js"></script>
+    <!-- Owl Carousel -->
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <!-- Appear JS -->
+    <script src="~/assets/js/jquery.appear.js"></script>
+    <!-- Odometer JS -->
+    <script src="~/assets/js/odometer.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Custom JS -->
+    <script src="~/assets/js/custom.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dropdown menü öğelerini seç
+            var dropdownLinks = document.querySelectorAll('.dropdown-toggle');
+
+            dropdownLinks.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    if (link.href) {
+                        // Eğer bir link varsa, href'e yönlendir
+                        window.location.href = link.href;
+                    }
+                });
+            });
+        });
+    </script>
+
+
+ @await RenderSectionAsync("Scripts", required: false)
+ </body>
+</html>

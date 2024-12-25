@@ -1,0 +1,52 @@
+﻿@using Nexin.Entity;
+@model List<Blog>
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>Blog</h2>
+                    <ul>
+                        <li>
+                            <a asp-action="Index" asp-controller="Home">Anasayfa</a>
+                        </li>
+                        <li>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            Blog
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="blog-area blog-area-two pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-lg-4">
+                    <div class="blog-item">
+                        <a asp-action="bloglar" asp-controller="blog" asp-route-id="@item.Url">
+                            <img src="~/@item.Resim" alt="Blog">
+                        </a>
+                        <span>@item.OlusturmaTarihi.ToString("dd.mm.yyyy")</span>
+                        <div class="blog-inner">
+                            <h3>
+                                <a asp-action="bloglar" asp-controller="blog" asp-route-id="@item.Url">@item.Baslik </a>
+                            </h3>
+                            <a class="blog-link" asp-action="bloglar" asp-controller="blog" asp-route-id="@item.Url">
+                               Daha Fazla
+                                <i class='bx bx-plus'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+      
+        </div>
+    </div>
+</section>

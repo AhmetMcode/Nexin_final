@@ -1,0 +1,129 @@
+﻿@model AddMessageViewModel
+
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>İletişim</h2>
+                    <ul>
+                        <li>
+                            <a asp-controller="Home" asp-action="Index" >Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            İletişim
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+<!-- Contact -->
+<section class="contact-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="contact-item contact-left">
+                    <h3>İletişim Bilgileri</h3>
+                    <ul>
+                        <li>
+                            <i class='bx bx-location-plus'></i>
+                            Adres: @Model.LayoutAyar.Adres
+                        </li>
+                        <li>
+                            <i class='bx bx-mail-send'></i>
+                            <a href="mailto:@Model.LayoutAyar.Mail">
+                                @Model.LayoutAyar.Mail
+                            </a>
+                        </li>
+                        <li>
+                            <i class='bx bx-phone-call'></i>
+                            <a href="tel:@Model.LayoutAyar.Telefon">
+                                @Model.LayoutAyar.Telefon
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="contact-item contact-right">
+                    <h3>Temasa Geç</h3>
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" id="name" class="form-control" placeholder="Ad" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <input type="email" id="email" class="form-control" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" id="phone_number" class="form-control" placeholder="Telefon" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" id="subject" class="form-control" placeholder="Konu" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <textarea id="message" class="form-control" cols="30" rows="8" placeholder="Mesajınız" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <button type="button" id="sendMessage" class="contact-btn btn">Mesaj Gönder</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="result" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="map-area">
+    <iframe id="map" src="https://www.google.com/maps/embed/v1/place?q=Ostim+OSB+Mahallesi,+Morfo+Teknoloji+Otomasyon+San.+ve+Tic.+Ltd.+Şti.,+1202/1+Sokak,+Ostim+Osb/Yenimahalle/Ankara,+Türkiye&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#sendMessage").click(function (e) {
+            e.preventDefault();
+
+            // Form verilerini al
+            var formData = {
+                Isim: $("#name").val(),
+                Mail: $("#email").val(),
+                TelNo: $("#phone_number").val(),
+                Konu: $("#subject").val(),
+                Mesaj: $("#message").val()
+            };
+
+            // AJAX isteği gönder
+            $.ajax({
+                url: "/Home/MesajGonder", // Controller ve action yolu
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                    $("#result").html("<div class='alert alert-success'>Mesajınız başarıyla gönderildi.</div>");
+                    $("#contactForm")[0].reset();
+                },
+                error: function () {
+                    $("#result").html("<div class='alert alert-danger'>Bir hata oluştu. Lütfen tekrar deneyin.</div>");
+                }
+            });
+        });
+    });
+</script>
+

@@ -1,0 +1,63 @@
+﻿@model Nexin.Entity.AnaSayfaTamamlanmis
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AnaSayfaTamamlanmis</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Yazisi" class="control-label"></label>
+                <input asp-for="Yazisi" class="form-control" />
+                <span asp-validation-for="Yazisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ic1" class="control-label"></label>
+                <input asp-for="ic1" class="form-control" />
+                <span asp-validation-for="ic1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sayi1" class="control-label"></label>
+                <input asp-for="sayi1" class="form-control" />
+                <span asp-validation-for="sayi1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ic2" class="control-label"></label>
+                <input asp-for="ic2" class="form-control" />
+                <span asp-validation-for="ic2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sayi2" class="control-label"></label>
+                <input asp-for="sayi2" class="form-control" />
+                <span asp-validation-for="sayi2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ic3" class="control-label"></label>
+                <input asp-for="ic3" class="form-control" />
+                <span asp-validation-for="ic3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sayi3" class="control-label"></label>
+                <input asp-for="sayi3" class="form-control" />
+                <span asp-validation-for="sayi3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

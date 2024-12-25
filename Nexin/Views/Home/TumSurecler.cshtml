@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Nexin.Entity.Servisler>
+
+<style>
+    .tags-container ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+
+    .tags-container li {
+        margin-right: 8px;
+    }
+
+    .tags-container a {
+        display: inline-block;
+        padding: 4px 8px;
+        background-color: #0073e6;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 12px;
+        transition: background-color 0.3s;
+    }
+
+        .tags-container a:hover {
+            background-color: #005bb5;
+        }
+
+    h2 {
+        color: #333;
+    }
+
+    p {
+        color: #555;
+        font-size: 16px;
+    }
+
+    img {
+        margin-bottom: 15px;
+    }
+
+    .mb-5 {
+        margin-bottom: 3rem;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
+
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>Süreçlerimiz</h2>
+                    <ul>
+                        <li>
+                            <a asp-action="Index" asp-controller="Home">Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <span>/</span>
+                        </li>
+                        <li>Süreçlerimiz</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tüm Servisler İçeriği -->
+<div class="container pt-5 pb-5">
+    @foreach (var servis in Model)
+    {
+        <div class="mb-5 border-bottom pb-4">
+            <!-- Başlık -->
+            <h2 class="mb-3 font-weight-bold">@servis.Baslik</h2>
+
+            <!-- Küçük Yazı -->
+            <p class="mb-3 text-muted">@servis.KucukYazi</p>
+
+
+            <!-- Resim -->
+            @if (!string.IsNullOrEmpty(servis.Resim))
+            {
+                <div class="mb-3 text-center">
+                    <img src="~/img/@servis.Resim" alt="@servis.Baslik" class="img-fluid rounded" style="max-width: 100%; height: auto;">
+                </div>
+            }
+
+            <!-- Uzun İçerik (HTML formatında) -->
+            <div class="mb-3">
+                @Html.Raw(servis.UzunYazi)
+            </div>
+
+            <!-- Meta Taglar -->
+            @if (!string.IsNullOrEmpty(servis.MetaTaglar))
+            {
+                var tags = servis.MetaTaglar.Split(',');
+                <div class="tags-container mt-3">
+                    <span class="font-weight-bold mr-2">Etiketler:</span>
+                    <ul>
+                        @foreach (var tag in tags)
+                        {
+                            <li>
+                                <a href="#" class="badge badge-primary">@tag.Trim()</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    }
+</div>

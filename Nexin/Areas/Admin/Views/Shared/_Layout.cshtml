@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nexin Admin Panel</title>
+    <link rel="stylesheet" href="~/yeni/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/yeni/assets/libs/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Tüm sayfa için Roboto fontu */
+        }
+
+        .nav-left-sidebar .nav-item .nav-link {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: 'Roboto', sans-serif; /* Sidebar linklerine özel */
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-main-wrapper">
+        <!-- Navbar -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" asp-controller="AnaSayfas" asp-action="Index">Nexin Admin Panel</a>
+            </nav>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">Menu</li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="AnaSayfas" asp-action="Index">AnaSayfa 3. satır ve Title</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="LayoutAyars" asp-action="Index">Layout Genel Ayarlar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="AnaSayfaSeciton3" asp-action="Index">AnaSayfa 10. satır</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="HakkimizdaAnaSayfa" asp-action="Index">Anasayfa 4. satır (hakkımızda yazı)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="HakkindaResimlers" asp-action="Index">Anasayfa 4. satır (hakkımızda slayt resimleri)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Blogs" asp-action="Index">Bloglar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Hizmet" asp-action="Index">Hizmetler</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="HizmetlerAlts" asp-action="Index">Alt Bar Hizmetler Listesi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Iletisims" asp-action="Index">Gelen Mesajlar</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Ortaklar" asp-action="Index">Anasayfa İş Ortakları Resimleri</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Referanslars" asp-action="Index">Anasayfa Referanslar Resimleri</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Sayfas" asp-action="Index">HTML sayfa aktarma</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Servislers" asp-action="Index">Süreçler</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="SSSes" asp-action="Index">S.S.S.</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="UstBars" asp-action="Index">Üst Nav Bar Düzenleme</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="YararliLinklers" asp-action="Index">Alt Bar Yararlı Linkler</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="dashboard-wrapper" style="padding-top: 70px;">
+            <div class="container-fluid dashboard-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/yeni/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="~/yeni/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

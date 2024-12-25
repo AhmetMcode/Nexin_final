@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Nexin.Entity.Hizmet>
+
+    <style>
+    .card {
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+        font-weight: bold;
+        color: #0073e6;
+    }
+
+    .page-title-area {
+        background-color: #f8f9fa;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .page-title-area h2 {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .page-title-area ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        color: #6c757d;
+    }
+
+    .page-title-area ul li {
+        margin-right: 5px;
+    }
+
+    .hover-link {
+        text-decoration: none; /* Alt çizgiyi kaldırır */
+        color: #0073e6; /* Metin rengi */
+        font-weight: bold; /* Kalın metin */
+        transition: color 0.3s ease; /* Hover efekti için geçiş süresi */
+    }
+
+        .hover-link:hover {
+            color: #005bb5; /* Hover sırasında renk değişimi */
+            text-decoration: underline; /* Hover sırasında alt çizgi ekler */
+        }
+</style>
+
+
+<!-- Sayfa Başlığı -->
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>Hizmetlerimiz</h2>
+                    <ul>
+                        <li>
+                            <a asp-action="Index" asp-controller="Home">Ana Sayfa</a>
+                        </li>
+                        <li><span>/</span></li>
+                        <li>Hizmetlerimiz</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hizmetler Kart Listesi -->
+<div class="container pt-5 pb-5">
+    <div class="row">
+        @foreach (var hizmet in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <!-- Resim -->
+                    <img src="~/img/@hizmet.KapakResimi" class="card-img-top" alt="@hizmet.Ad" style="height: 200px; object-fit: cover;">
+
+                    <!-- Kart İçeriği -->
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@hizmet.Ad</h5>
+                        <p class="card-text">@hizmet.AltAd</p>
+                        <a asp-action="Hizmetler" asp-route-id="@hizmet.Url" class="hover-link mt-auto">Detayı Gör</a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

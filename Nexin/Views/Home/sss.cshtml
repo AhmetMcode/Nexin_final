@@ -1,0 +1,66 @@
+﻿@using Nexin.Entity;
+@model List<SSS>
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>SSS</h2>
+                    <ul>
+                        <li>
+                            <a asp-action="Index" asp-controller="Home">Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            Sıkça Sorulanlar
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+<!-- Faq -->
+<section class="faq-area pt-100 pb-70">
+    <div class="container">
+        <div class="row faq-wrap">
+            <div class="col-lg-12">
+                <div class="faq-head">
+                    <h2>Sıkça Sorulan Sorular</h2>
+                </div>
+                <div class="faq-item">
+                    <ul class="accordion">
+                        @foreach (var item in Model.ToList())
+                        {
+                            <li>
+                                <a>@item.Baslik</a>
+                                <p>@item.Icerik</p>
+                            </li>
+                        }
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</section>
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/assets/js/bootstrap.bundle.min.js"></script>
+<!-- Form Validator JS -->
+<!-- Contact JS -->
+<!-- Meanmenu JS -->
+<script src="~/assets/js/jquery.meanmenu.js"></script>
+<!-- Owl Carousel -->
+<script src="~/assets/js/owl.carousel.min.js"></script>
+<!-- Appear JS -->
+<script src="~/assets/js/jquery.appear.js"></script>
+<!-- Odometer JS -->
+<script src="~/assets/js/odometer.min.js"></script>
+<!-- Magnific Popup JS -->
+<script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- Custom JS -->

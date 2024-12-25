@@ -1,0 +1,170 @@
+﻿@using Nexin.Controllers
+@using Nexin.Entity;
+
+@model Hizmet
+
+
+<style>
+    .tags-container {
+        display: flex;
+        align-items: center;
+    }
+
+        .tags-container ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tags-container li {
+            margin: 0 8px;
+        }
+
+        .tags-container span {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .tags-container a {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+            .tags-container a:hover {
+                background-color: #005bb5;
+            }
+
+</style>
+
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>@Model.Ad</h2>
+                    <ul>
+                        <li>
+                            <a asp-action="Index" asp-controller="Home">Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <span>/</span>
+                        </li>
+                      <li>
+                        @Model.Ad
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page Title -->
+<!-- Project Details -->
+<div class="project-details-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="project-details-item">
+                    <div class="project-details-img">
+                        <img src="~/img/@Model.KapakResimi" alt="Project">
+                        <p></p>
+                        <div class="row">
+                            
+                           
+                        </div>
+                    </div>
+                    <div>
+                        @Html.Raw(Model.Icerik)
+                    </div>
+                    <div class="project-details-content">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-6">
+                                <img src="~/img/@Model.AnaResim1" alt="Project Details">
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <img src="~/img/@Model.AnaResim2" alt="Project Details">
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <div class="tags-container">
+                        <ul>
+                            @if (!string.IsNullOrEmpty(Model.MetaTaglar))
+                            {
+                                var tags = Model.MetaTaglar.Split(','); // MetaTaglar'ı virgülle ayırarak dizi haline getiriyoruz
+                                foreach (var item in tags)
+                                {
+                                    <li>
+                                        <a href="#">@item.Trim()</a> <!-- Trim() ile boşlukları temizliyoruz -->
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="project-details-item">
+                    <div class="project-details-mec">
+                        <h3>Hizmetlerimiz</h3>
+                        <ul>
+                            @foreach (var item in (List<HizmetListesiViewModel>)ViewBag.Hizmet)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Hizmetler", "Home", new { id = item.Url })">
+                                        @item.Ad
+                                        <i class='bx bx-chevron-right'></i>
+                                    </a>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
+                    <div class="project-details-form">
+                        <h3>Bize Sor</h3>
+                        <form asp-action="MesajGonder" method="post">
+                            <!-- İsim Alanı -->
+                            <div class="form-group">
+                                <label>
+                                    <i class='bx bx-user'></i>
+                                </label>
+                                <input type="text" asp-for="Iletisim.Isim" class="form-control" placeholder="İsminiz" required>
+                            </div>
+
+                            <!-- Mail Alanı -->
+                            <div class="form-group">
+                                <label>
+                                    <i class='bx bx-mail-send'></i>
+                                </label>
+                                <input type="email" asp-for="Iletisim.Mail" class="form-control" placeholder="Mail Adresiniz" required>
+                            </div>
+
+                            <!-- Mesaj Alanı -->
+                            <div class="form-group">
+                                <label>
+                                    <i class='bx bx-notepad'></i>
+                                </label>
+                                <textarea asp-for="Iletisim.Mesaj" rows="8" class="form-control" placeholder="Mesajınız" required></textarea>
+                            </div>
+
+                            <!-- Gönder Butonu -->
+                            <button type="submit" class="btn project-form-btn">Gönder</button>
+                        </form>
+                    </div>
+
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

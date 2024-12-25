@@ -1,0 +1,60 @@
+﻿@model Nexin.Entity.AnaSayfaTamamlanmis
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AnaSayfaTamamlanmis</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Yazisi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Yazisi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ic1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ic1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sayi1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sayi1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ic2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ic2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sayi2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sayi2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ic3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ic3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sayi3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sayi3)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

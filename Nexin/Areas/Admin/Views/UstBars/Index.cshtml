@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Nexin.Entity.UstBar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Top Menü Ekleme Sayfasy</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Top)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.baglanacakUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ustAd)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Top)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.baglanacakUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ustAd)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

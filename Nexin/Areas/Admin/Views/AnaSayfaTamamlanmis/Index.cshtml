@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Nexin.Entity.AnaSayfaTamamlanmis>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Bu Ekranın Yönettiği Section Ektedir</h1>
+
+<img src="~/ekran görüntüsü 2023-12-14 000917.png" />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Yazisi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ic1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sayi1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ic2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sayi2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ic3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sayi3)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yazisi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ic1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sayi1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ic2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sayi2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ic3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sayi3)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Düzenle</a> |
+           
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

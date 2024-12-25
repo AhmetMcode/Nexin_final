@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Nexin.Entity.AnaSayfaSeciton3>
+
+
+
+<img style="width:500px;" src="~/ekran görüntüsü 2023-12-14 004142.png" />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltYazi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icerik1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icerik2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icerik3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icerik4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icerik5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icerik6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResimSol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResimOynar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Baslik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltYazi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icerik1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icerik2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icerik3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icerik4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icerik5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icerik6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResimSol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResimOynar)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Düzenle</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@using Nexin.Entity;
+@model Sayfa
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="title-item">
+                    <h2>@Model.Ad</h2>
+                    <ul>
+                        <li>
+                            <a asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <span>/</span>
+                        </li>
+                        <li>
+                            @Model.Ad
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <br />
+    @Html.Raw(Model.Icerik)
+    <br />
+</div>
